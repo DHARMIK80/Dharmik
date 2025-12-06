@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dharmik Khasiya — Portfolio</title>
+  <meta name="description" content="Dharmik Khasiya • Frontend Developer • Student Portfolio" />
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#121833;
+      --accent:#4f8cff;
+      --accent-soft:#8bb4ff;
+      --text:#eaf1ff;
+      --muted:#9aa8c7;
+      --radius:14px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:Inter,system-ui,Arial;
+      background:radial-gradient(800px 400px at 10% 10%, rgba(79,140,255,0.12), transparent),
+                 radial-gradient(600px 300px at 90% 90%, rgba(139,180,255,0.10), transparent),
+                 linear-gradient(180deg,#0b1020,#070b17);
+      color:var(--text);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    /* floating gradient animation */
+    .bg-anim{position:fixed;inset:-20%;z-index:-1;background:conic-gradient(from 180deg,var(--accent),var(--accent-soft),var(--accent));filter:blur(140px);opacity:0.25;animation:spin 30s linear infinite}
+    @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+    a{text-decoration:none;color:inherit}
+
+    .container{max-width:1100px;margin:0 auto;padding:32px 20px}
+
+    header{display:flex;justify-content:space-between;align-items:center;margin-bottom:60px;animation:fadeDown .8s ease forwards}
+
+    @keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:none}}
+
+    .logo{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent),var(--accent-soft));font-weight:800;color:#081225;animation:float 4s ease-in-out infinite}
+
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+    nav a{margin-left:18px;color:var(--muted);font-weight:600;position:relative}
+    nav a::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-soft));transition:width .3s}
+    nav a:hover{color:#fff}
+    nav a:hover::after{width:100%}
+
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;margin-bottom:80px}
+
+    .hero h1{font-size:42px;line-height:1.1;margin-bottom:14px;animation:fadeUp .9s ease forwards}
+    .hero p{color:var(--muted);max-width:600px;margin-bottom:22px;animation:fadeUp 1.1s ease forwards}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+    .buttons{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp 1.3s ease forwards}
+
+    .btn{padding:12px 18px;border-radius:10px;font-weight:700;background:var(--card);border:1px solid rgba(255,255,255,0.06);transition:transform .2s,box-shadow .2s}
+    .btn:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(79,140,255,0.25)}
+
+    .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-soft));color:#081225;border:none}
+
+    .stat-box{background:var(--card);padding:22px;border-radius:var(--radius);border:1px solid rgba(255,255,255,0.05);animation:fadeUp 1.2s ease forwards}
+
+    section{margin-bottom:90px}
+
+    .section-title{font-size:22px;margin-bottom:26px;position:relative}
+    .section-title::after{content:"";display:block;width:60px;height:4px;background:linear-gradient(90deg,var(--accent),var(--accent-soft));border-radius:6px;margin-top:10px;animation:grow .8s ease forwards}
+    @keyframes grow{from{width:0}to{width:60px}}
+
+    .about{max-width:820px;color:var(--muted);animation:fadeUp .8s ease forwards}
+
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+
+    .skill{background:var(--card);padding:18px;border-radius:var(--radius);border:1px solid rgba(255,255,255,0.05);transition:transform .3s,box-shadow .3s}
+    .skill:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 20px 40px rgba(79,140,255,0.2)}
+
+    .skill p{font-size:14px;color:var(--muted)}
+
+    .bar{height:8px;background:#0a0f22;border-radius:999px;margin-top:10px;overflow:hidden}
+    .bar span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-soft));width:0%;transition:width 1.2s ease}
+
+    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+
+    .project{background:var(--card);padding:20px;border-radius:var(--radius);border:1px solid rgba(255,255,255,0.05);transition:transform .3s,box-shadow .3s}
+    .project:hover{transform:translateY(-12px);box-shadow:0 24px 60px rgba(79,140,255,0.22)}
+
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+
+    .contact-box{background:var(--card);padding:22px;border-radius:var(--radius);border:1px solid rgba(255,255,255,0.05);animation:fadeUp 1s ease forwards}
+
+    input,textarea{width:100%;padding:12px;margin-top:12px;background:#0a0f22;color:var(--text);border-radius:8px;border:1px solid rgba(255,255,255,0.06)}
+
+    button{margin-top:14px;padding:12px 18px;border-radius:10px;border:none;background:linear-gradient(135deg,var(--accent),var(--accent-soft));color:#081225;font-weight:800;cursor:pointer;transition:transform .2s}
+    button:hover{transform:scale(1.05)}
+
+    footer{text-align:center;color:var(--muted);padding:40px 0 10px;font-size:14px;animation:fadeUp .8s ease forwards}
+
+    @media(max-width:900px){.hero{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="logo">DK</div>
+        <strong>Dharmik Khasiya</strong>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <h1>Hi, I’m <span>Dharmik</span><br>Frontend Developer</h1>
+        <p>
+          16 year old frontend developer building clean, fast and responsive one‑page websites.
+          Ideal for students, personal brands and small projects.
+        </p>
+        <div class="buttons">
+          <a class="btn primary" href="#contact">Hire me</a>
+          <a class="btn" href="#projects">View work</a>
+        </div>
+      </div>
+
+      <div class="stat-box">
+        <h3>What I deliver</h3>
+        <p>• One‑page websites<br>• Responsive layouts<br>• Clean HTML & CSS<br>• Quick updates</p>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-title">About me</div>
+      <div class="about">
+        I am a student developer with strong fundamentals in HTML, CSS, C and C++. I focus on
+        simplicity, performance and practical design. I like building things that actually get used.
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-title">Skills</div>
+      <div class="skills-grid">
+        <div class="skill"><h4>HTML</h4><p>Semantic, SEO‑friendly markup</p><div class="bar"><span data-val="90"></span></div></div>
+        <div class="skill"><h4>CSS</h4><p>Flexbox, Grid, responsive UI</p><div class="bar"><span data-val="85"></span></div></div>
+        <div class="skill"><h4>C</h4><p>Logic building and fundamentals</p><div class="bar"><span data-val="70"></span></div></div>
+        <div class="skill"><h4>C++</h4><p>OOP basics and practice</p><div class="bar"><span data-val="65"></span></div></div>
+        <div class="skill"><h4>Video Editing</h4><p>Short reels and basic edits</p><div class="bar"><span data-val="75"></span></div></div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-title">Projects</div>
+      <div class="projects">
+        <div class="project"><h4>Student Portfolio</h4><p>Clean personal portfolio built using only HTML and CSS.</p></div>
+        <div class="project"><h4>Landing Page</h4><p>Mobile friendly landing page with lightweight layout.</p></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-title">Contact</div>
+      <div class="contact-grid">
+        <div class="contact-box">
+          <p>Email: <a href="mailto:dharmik120420@gmail.com">dharmik120420@gmail.com</a></p>
+          <p>Instagram: <a href="https://www.instagram.com/1only_dh4ml0_333_/" target="_blank">@1only_dh4ml0_333_</a></p>
+          <p style="margin-top:10px">Available for student and small projects.</p>
+        </div>
+        <div class="contact-box">
+          <form onsubmit="event.preventDefault();alert('Message sent (demo). Contact via email for now.')">
+            <input type="text" placeholder="Your name" required>
+            <input type="email" placeholder="Your email" required>
+            <textarea rows="5" placeholder="Message" required></textarea>
+            <button type="submit">Send message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer>© 2025 Dharmik Khasiya</footer>
+  </div>
+
+  <script>
+    // animate skill bars
+    document.querySelectorAll('.bar span').forEach(bar=>{
+      const v = bar.dataset.val;
+      setTimeout(()=>bar.style.width = v+'%', 400);
+    })
+  </script>
+</body>
+</html>
